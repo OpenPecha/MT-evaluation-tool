@@ -5,11 +5,11 @@ services:
     plan: starter
     repo: https://github.com/OpenPecha/MT-evaluation-tool.git
     branch: main
-    buildCommand: npm ci --production=false && npm run build && npm prune --production
+    buildCommand: npm ci --production=false && npx prisma generate && npm run build && npm prune --production
     startCommand: npx prisma migrate deploy && npm run start
     envVars:
       - key: NODE_VERSION
-        value: ~18.18.0
+        value: ~20.0.0
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL
