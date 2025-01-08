@@ -15,8 +15,8 @@ export const action: ActionFunction = async ({ request }) => {
   }
   
   try {
-    const rankings = JSON.parse(rankingsStr);
-    await submitRanking(translationId, userId, rankings);
+    const rankedCandidates = JSON.parse(rankingsStr) as string[];
+    await submitRanking(translationId, userId, rankedCandidates);
     
     return redirect(`/?session=${session}`);
   } catch (error) {

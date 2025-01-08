@@ -102,7 +102,7 @@ export default function RankingTranslation({ user, translation }: Props) {
 
   const initializeRankings = useCallback(() => 
     translation.candidates.map((text, index) => ({
-      type: `candidate${index + 1}`,
+      type: `${index}`,
       text,
       rank: index + 1
     })), [translation.candidates]);
@@ -200,15 +200,7 @@ export default function RankingTranslation({ user, translation }: Props) {
               <input
                 type="hidden"
                 name="rankings"
-                value={JSON.stringify(
-                  rankingItems.reduce(
-                    (acc, item) => ({
-                      ...acc,
-                      [item.type]: item.rank,
-                    }),
-                    {}
-                  )
-                )}
+                value={JSON.stringify(rankingItems.map(item => item.text))}
               />
 
               {actionData?.errors?.form && (
