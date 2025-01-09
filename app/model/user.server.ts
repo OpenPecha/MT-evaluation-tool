@@ -72,7 +72,7 @@ export async function getNextTranslationToRank() {
 export async function submitRanking(
   translationId: string,
   userId: string,
-  rankings: Record<string, number>
+  rankings: string[]
 ) {
   return await db.translation.update({
     where: { id: translationId },
